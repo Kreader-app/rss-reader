@@ -3,7 +3,7 @@
   "description": "A simple RSS reader",
   "author": "https://github.com/Kreader-app/",
   "dependencies": {
-    "feed-read": "*",
+    "feed-read": "*"
   },
   "engines": {
     "node": "10.x",
