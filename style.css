@@ -1,0 +1,15 @@
+body{
+	margin:40px auto;
+	max-width:580px;
+	line-height:1.6;
+	font-size:18px}
+
+a:visited {
+  color: grey;
+}
+
+.article {
+  font-family: Helvetica,"Helvetica Neue",Arial,sans-serif;
+  border: solid black 1px;
+  padding: 10px 10px 10px 10px
+}

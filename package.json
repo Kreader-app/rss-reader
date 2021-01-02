@@ -1,0 +1,16 @@
+{
+  "name": "rss-reader",
+  "description": "A simple RSS reader",
+  "author": "https://github.com/Kreader-app/",
+  "dependencies": {
+    "feed-read": "*",
+  },
+  "engines": {
+    "node": "10.x",
+    "npm": "5.8.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kreader-app/rss-reader.git"
+  }
+}

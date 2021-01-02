@@ -1,0 +1,103 @@
+<html>
+<head>
+	   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kreader - A simple RSS reader</title>
+<style type="text/css">body{
+	margin:40px auto;
+	max-width:580px;}
+	
+* {
+	line-height:1.6;
+	font-size:18px
+	font-family: Helvetica,"Helvetica Neue",Arial,sans-serif;
+	}
+
+a:visited {
+  color: grey;
+}
+
+</style></head>
+<body>
+
+ <h1>Kreader - RSS reader</h1>
+ 
+ Enter your RSS feed in one of the below boxes and press Open. Your can chose to view the full RSS feed or only the headlines.<br>
+ 
+ <p></p>
+ 
+ <form name="URL_entry_form-http" id="URL_entry_form-http" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL">http://</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open HTTP" onclick="showFormData(this.form, 'http://', '');" /></td></table>
+    </form>
+
+
+ <form name="URL_entry_form-http-no_descriptions" id="URL_entry_form-http-no_descriptions" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL">http://</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open HTTP - only headlines" onclick="showFormData(this.form, 'http://', '&no_content');" /></td></table>
+</form>
+    
+
+ <form name="URL_entry_form-https" id="URL_entry_form-https" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL-secure">https://</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open HTTPS" onclick="showFormData(this.form, 'https://','');" /></td></table>
+    </form>
+    
+    
+<form name="URL_entry_form-https-no_descriptions" id="URL_entry_form-https-no_descriptions" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL">https://</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open HTTP - only headlines" onclick="showFormData(this.form, 'https://', '&no_content');" /></td></table>
+    </form>
+
+<form name="URL_entry_form" id="URL_entry_form" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL">Full URL</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open URL" onclick="showFormData(this.form, '', '');" /></td></table>
+    </form>
+
+    
+<form name="URL_entry_form-no_descriptions" id="URL_entry_form-no_descriptions" action="#">
+    <table cellspacing="4">
+        <tr><td><label for="URL">Full URL</label></td><td><input type="text" size="30" maxlength="155" name="url" /></td></tr>
+        <tr><td colspan="2"><input type="button" name="submit" value="Open URL - only headlines" onclick="showFormData(this.form, '', '&no_content');" /></td></table>
+    </form>
+
+<h2>Examples:</h2>
+
+<a href="http://localhost:5000/?url=https://old.reddit.com/r/eink/.rss">The e-ink reddit</a> and the same <a href="http://localhost:5000/?url=https://old.reddit.com/r/eink/.rss&no_content">with only headlines</a> 
+<br>
+<a href="http://localhost:5000/?url=https://old.reddit.com/r/earthporn/.rss">The Earth pics reddit</a> and the same <a href="http://localhost:5000/?url=https://old.reddit.com/r/earthporn/.rss&no_content">with only headlines</a> 
+<br>
+<a href="http://localhost:5000/?url=https://daringfireball.net/feeds/main">Daring Fireball RSS</a> and the same <a href="http://localhost:5000/?url=https://daringfireball.net/feeds/main&no_content">with only headlines</a> 
+<p>
+You can make your own bookmarks by adding your RSS feed URL to <strong>http://localhost:5000/?url=</strong>
+<p></p>
+Like so <strong>http://localhost:5000/?url=http://RSS-DOMAIN.com/RSS-FEED</strong>
+<p></p>
+<h2>Feedback</h2>
+Hit me up on <a href=https://old.reddit.com/user/ftth_finland>Reddit</a>
+<script>
+
+function showFormData(oForm, prefix, suffix) {
+   var url = "";
+   var i = 0;   
+   var BASE_URL = "http://localhost:5000/?url="
+   
+   url = oForm.elements[i].value
+	   
+	   if(oForm.elements[i].value == null || oForm.elements[i].value == '') {
+		url = "Enter RSS feed URL \n";
+	   } else {
+		   url = prefix + oForm.elements[i].value + suffix;
+	   }
+   
+
+   window.open(BASE_URL+url,"_self")
+}
+</script>
+</body>
+</html>
