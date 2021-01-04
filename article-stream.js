@@ -5,6 +5,11 @@ var feed = require('feed-read'),  // require the feed-read module
 
 // load css styles
   var css = '<style type="text/css">' +require('fs').readFileSync('./style.css').toString() + '</style>'
+// load navbar
+  var navbar = require('fs').readFileSync('./navbar.html').toString();
+//load js_scroller
+  var js_scroller = require('fs').readFileSync('./js_scroller.html').toString();
+
 
 http.createServer(function (req, res) {
   // send basic http headers to client
@@ -19,8 +24,9 @@ http.createServer(function (req, res) {
   const queryObject = url.parse(req.url,true).query;
 
   // setup simple html page:
-  res.write("<html>\n<head>\n<title>RSS Feed - " + queryObject.url + "</title>\n" +css +"</head>\n<body>");
-
+  res.write("<html>\n<head>\n<title>RSS Feed - " + queryObject.url + "</title>\n" +css +"</head>\n<body id=\"body\">");
+  // insert navbar
+  res.write(navbar);
 
 // Load article description content by default. Turn off by appending no_content to URL
 var descriptions = true;
@@ -55,7 +61,8 @@ if(typeof articles !== "undefined")
 
         // check we have reached the end of our list of articles & urls
         if( i === articles.length-1 ) {
-          res.end("</body>\n</html>"); // end http response
+			res.write(js_scroller);  // insert js_scroller script
+			res.end("</body>\n</html>"); // end http response
         } // else still have rss urls to check
       } //  end inner for loop
 } // end undefined articles check
@@ -67,11 +74,11 @@ else { res.write("<strong>NO ARTICLES! - CHECK URL: " + queryObject.url + "</str
 } // end undefined URL check
 else { res.write("<strong>NO RSS FEED URL!</strong>")  }
 
-
+	
 
   setTimeout(function() {
 
-          
+    
     res.end("</body>\n</html>"); // end http response
   }, 4000);
 

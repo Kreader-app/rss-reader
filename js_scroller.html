@@ -1,0 +1,33 @@
+   <script>
+
+		var height = window.innerHeight 
+		|| document.documentElement.clientHeight
+		|| document.body.clientHeight;
+
+		var width  = window.innerWidth 
+		|| document.documentElement.clientWidth 
+		|| document.body.clientWidth;
+
+		document.getElementById("body").style.maxWidth = width-70;
+
+
+        var scroll_amount = 150;
+        
+        if (height > scroll_amount){
+			
+			scroll_amount = height-30;
+		}
+
+        function scrollDown () {
+		
+				window.scrollBy(0, scroll_amount);
+        }
+
+        function scrollUp () {
+    		
+		window.scrollBy(0, -scroll_amount);
+
+        }
+
+
+    </script>

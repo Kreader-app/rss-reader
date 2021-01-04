@@ -13,3 +13,10 @@ a:visited {
   border: solid black 1px;
   padding: 10px 10px 10px 10px
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%
+}
